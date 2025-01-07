@@ -4,16 +4,28 @@
     <title>Min nettside</title>
     <style>
         body {
-            background-color: #ff5733; /* rød bakgrunn */
-            font-family: Arial, sans-serif; /* Endrer skrifttypen */
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
         }
-        h1 {
-            color: #333; /* Tekstfarge */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
-        p {
-            color: #555; /* Mørkere grå */
+        button:hover {
+            background-color: #45a049;
+        }
+        #quote {
+            margin-top: 20px;
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
         }
     </style>
 </head>
@@ -22,5 +34,18 @@
     <p>Her er litt tekst med en fin bakgrunnsfarge.</p>
     <p>Klikk på knappen nedenfor for å gå til en ny side.</p>
     <button onclick="location.href='nySide.html';">Gå til ny side</button>
+    <button onclick="showQuote()">Vis sitat</button>
+    <div id="quote"></div>
+    <script src="quotes.js"></script> <!-- Laster inn sitatene -->
+    <script>
+        function showQuote() {
+            // Velg et tilfeldig sitat
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
+
+            // Vis sitatet i <div>-elementet med id="quote"
+            document.getElementById("quote").innerText = randomQuote;
+        }
+    </script>    
 </body>
 </html>
