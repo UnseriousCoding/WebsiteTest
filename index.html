@@ -27,6 +27,26 @@
             font-style: italic;
             color: #555;
         }
+        #car {
+            position: absolute;
+            bottom: 10px;
+            left: -200px; /* Starter utenfor skjermen */
+            width: 100px;
+            transition: transform 1s ease-in-out; /* For jevn bevegelse */
+        }
+
+        .drive {
+            animation: driveAcross 3s linear forwards;
+        }
+
+        @keyframes driveAcross {
+            from {
+                left: -200px; /* Startposisjon */
+            }
+            to {
+                left: 100vw; /* Kjører ut av skjermen */
+            }
+        }        
     </style>
 </head>
 <body>
@@ -46,6 +66,19 @@
             // Vis sitatet i <div>-elementet med id="quote"
             document.getElementById("quote").innerText = randomQuote;
         }
-    </script>    
+    <button id="driveButton">Hold musen over meg!</button>
+    <img id="car" src="https://via.placeholder.com/100x50.png?text=Car" alt="Bil">
+
+    <script>
+        const button = document.getElementById("driveButton");
+        const car = document.getElementById("car");
+
+        // Når musen er over knappen, legg til animasjonsklassen
+        button.addEventListener("mouseover", () => {
+            car.classList.add("drive");
+            setTimeout(() => car.classList.remove("drive"), 3000); // Fjern klassen etter animasjonen
+        });        
+    </script>
+    
 </body>
 </html>
